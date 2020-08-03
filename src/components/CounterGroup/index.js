@@ -15,10 +15,11 @@ class CounterGroup extends React.Component {
         if (isNaN(parseInt(event.target.value))) {
             return;
         }
-        this.setState({
-            size: event.target.value ? parseInt(event.target.value) : 0,
-            totalNum : 0
-        });
+        if (event.target.value !== this.state.size) {
+            this.setState({
+                size: event.target.value ? parseInt(event.target.value) : 0,
+            });
+        }
     };
 
     handleIncrease = () => {
@@ -47,7 +48,7 @@ class CounterGroup extends React.Component {
                 initArray.map((item, index) =>
                     <Counter onHandleIncrease={this.handleIncrease}
                              onHandleReduce={this.handleReduce}
-                             groupSize = {this.state.size}
+                             groupSize={this.state.size}
                              key={index}/>)
             }
         </div>
