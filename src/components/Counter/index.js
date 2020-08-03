@@ -1,36 +1,44 @@
 import React from "react";
+import store from "../store/index"
+import {DECREMENT, INCREMENT} from "../store/actionTypes";
 
 class Counter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             value: 0,
-            groupSize: 0
-        }
+            size: 0
+        };
+        this.storeChange = this.storeChange.bind(this);
+        store.subscribe(this.storeChange);
     }
 
     increase = () => {
         this.setState(preState => ({
             value: preState.value + 1
         }));
-        this.props.onHandleIncrease();
+        store.dispatch({type: INCREMENT})
     };
 
-    static getDerivedStateFromProps(props, state) {
-        if (props.groupSize !== state.groupSize) {
-            return {
+    storeChange() {
+        let currentSize = this.state.size;
+        if (currentSize === 0) {
+            this.setState({
+                size: store.getState().size
+            })
+        } else if (currentSize !== store.getState().size) {
+            this.setState({
                 value: 0,
-                groupSize: props.groupSize
-            }
+                size: store.getState().size
+            })
         }
-        return null;
     }
 
     reduce = () => {
         this.setState(preState => ({
             value: preState.value - 1
         }));
-        this.props.onHandleReduce();
+        store.dispatch({type: DECREMENT})
     };
 
     render() {
