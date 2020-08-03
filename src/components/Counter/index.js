@@ -35,6 +35,9 @@ class Counter extends React.Component {
     }
 
     reduce = () => {
+        if (this.state.value <= 0) {
+            return;
+        }
         this.setState(preState => ({
             value: preState.value - 1
         }));
