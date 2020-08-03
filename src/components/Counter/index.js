@@ -1,6 +1,6 @@
 import React from "react";
-import store from "../store/index"
-import {DECREMENT, INCREMENT} from "../store/actionTypes";
+import store from "../../store/index"
+import {DECREMENT, INCREMENT} from "../../store/actionTypes";
 
 class Counter extends React.Component {
     constructor(props) {

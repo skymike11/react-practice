@@ -1,7 +1,7 @@
 import React from "react";
 import Counter from "../Counter";
-import store from "../store/index"
-import {SETSIZE} from "../store/actionTypes";
+import store from "../../store/index"
+import {SETSIZE} from "../../store/actionTypes";
 
 class CounterGroup extends React.Component {
     constructor(props) {
