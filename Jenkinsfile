@@ -1,14 +1,21 @@
 pipeline {
-     agent {label 'master'}
-     stages {
-        stage ('Initialize') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
+    
+    agent any
+
+    environment {
+        CI = 'true'
+    }
+
+    stages {
         stage('Build') { 
             steps {
-               
+                bat 'npm install' 
+            }
+        }
+
+        stage('Deploy') { 
+            steps {
+                bat 'npm start' 
             }
         }
     }
