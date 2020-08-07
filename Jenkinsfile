@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
+                
                 bat 'npm install' 
                 bat 'npm run build' 
             }
@@ -16,7 +17,7 @@ pipeline {
 
         stage('Deploy') { 
             steps {
-                bat 'xcopy "build" "D:/deploy/react-test" /e'
+                bat 'xcopy "build" "D:/deploy/react-test" /e /y'
             }
         }
     }
