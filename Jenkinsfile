@@ -10,13 +10,13 @@ pipeline {
         stage('Build') { 
             steps {
                 bat 'npm install' 
-                bat 'npm build' 
+                bat 'npm run build' 
             }
         }
 
         stage('Deploy') { 
             steps {
-                bat 'xcopy C:/windows/system32/config/systemprofile/AppData/Local/Jenkins.jenkins/workspace/react-test D:/deploy /e'
+                bat 'xcopy build D:/deploy /e'
             }
         }
     }
