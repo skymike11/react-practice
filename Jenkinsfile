@@ -16,7 +16,7 @@ pipeline {
 
         stage('Deploy') { 
             steps {
-                bat 'xcopy build D:/deploy /e'
+                bat 'xcopy build D:/deploy/react-test /e'
             }
         }
     }
